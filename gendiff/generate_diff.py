@@ -1,5 +1,5 @@
 import json
-from gendiff.packages.parse_data import parse_data
+from gendiff.parse_data import parse_data
 
 
 def generate_diff(file_path1, file_path2):
