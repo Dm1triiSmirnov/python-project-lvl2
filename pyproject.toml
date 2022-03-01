@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hexlet-code"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Dm1triiSmirnov <smirnov0719@gmail.com>"]
 packages = [
@@ -13,6 +13,8 @@ argparse = "^1.4.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
+pytest = "^7.0.1"
+pytest-cov = "^3.0.0"
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"

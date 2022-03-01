@@ -12,3 +12,5 @@ package-install:
 
 lint:
 	poetry run flake8 gendiff
+
+.PHONY: install build publish package-install lint
