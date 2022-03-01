@@ -1,10 +1,10 @@
-<h1>Difference Calculator</h1>
+# Difference Calculator
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Dm1triiSmirnov/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Dm1triiSmirnov/python-project-lvl2/actions)
 
 
-## Demonstation:
+### Demonstration:
 
 <ol>
 <li>Compare JSON files
