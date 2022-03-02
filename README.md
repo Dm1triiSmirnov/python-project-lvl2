@@ -2,7 +2,7 @@
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Dm1triiSmirnov/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Dm1triiSmirnov/python-project-lvl2/actions)
-
+[![Python-CI](https://github.com/Dm1triiSmirnov/python-project-lvl2/actions/workflows/pyci.yml/badge.svg)](https://github.com/Dm1triiSmirnov/python-project-lvl2/actions/workflows/pyci.yml)
 
 ### Demonstration:
 
