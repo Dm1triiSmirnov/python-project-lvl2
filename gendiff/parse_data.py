@@ -21,6 +21,6 @@ def parse_data(data1, data2):
             result.append(f'  {ADDED} {key}: {data2[key]}')
 
     result.append('}')
-    result = map(str.lower, result)
+    result = list(map(str.lower, result))
 
     return result
