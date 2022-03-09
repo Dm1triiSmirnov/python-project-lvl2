@@ -20,7 +20,8 @@ def parse_data(data1, data2):
         elif key not in data1:
             result.append(f'  {ADDED} {key}: {data2[key]}')
 
-    result.append('}')
+    result = map(lambda el: el + '\n', result)
     result = list(map(str.lower, result))
+    result.append('}')
 
     return result
