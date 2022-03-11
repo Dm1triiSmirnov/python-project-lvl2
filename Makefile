@@ -17,6 +17,6 @@ test:
 	poetry run pytest
 
 test-cov:
-	poetry run pytest --cov=gendiff
+	poetry run pytest --cov=gendiff --cov-report xml
 
 .PHONY: install build publish package-install lint test test-cov
