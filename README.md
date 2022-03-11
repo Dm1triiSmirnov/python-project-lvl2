@@ -9,7 +9,11 @@
 ### Demonstration:
 
 <ol>
-<li>Compare JSON files
+<li>Compare JSON files</li>
 <a href="https://asciinema.org/a/3XlmN2TOFOpyIvKrr7ACPPK2n" target="_blank"><img src="https://asciinema.org/a/3XlmN2TOFOpyIvKrr7ACPPK2n.svg" /></a>
+
+<li>Compare YAML files</li>
+<a href="https://asciinema.org/a/nVRUnFPaIBFaYgSrEqZRKD8In" target="_blank"><img src="https://asciinema.org/a/nVRUnFPaIBFaYgSrEqZRKD8In.svg" /></a>
+
 
 </ol>
