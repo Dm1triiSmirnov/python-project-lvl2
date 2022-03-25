@@ -1,18 +1,23 @@
 import json
 import yaml
 from gendiff.parse_data import parse_data
+from formatters.formatter import formatter
 
 
 def get_data(file):
-    if file.split('.')[-1] == 'json':
-        return json.load(open(file))
-    elif file.split('.')[-1] == 'yml' or file.split('.')[-1] == 'yaml':
+    extension = file.split('.')[-1]
+    if extension == 'json':
+        data = json.load(open(file))
+        return data
+    elif extension == 'yml' or extension == 'yaml':
         with open(file) as yml_file:
-            return yaml.safe_load(yml_file)
+            data = yaml.safe_load(yml_file)
+            return data
 
 
-def generate_diff(file1, file2):
+def generate_diff(file1, file2, format='stylish'):
     data1 = get_data(file1)
     data2 = get_data(file2)
-    diff = parse_data(data1, data2)
+    compared_data = parse_data(data1, data2)
+    diff = formatter(compared_data, format)
     return diff
