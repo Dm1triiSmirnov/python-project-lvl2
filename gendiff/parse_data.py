@@ -38,8 +38,8 @@ def parse_data(data1, data2):
             result[key] = {
                 'status': CHANGED,
                 'value': {
-                    'old_value': data1[key],
-                    'new_value': data2[key]
+                    'old_status': data1[key],
+                    'new_status': data2[key]
                 },
                 'children': None
             }

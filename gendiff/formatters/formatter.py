@@ -13,4 +13,4 @@ def formatter(data, format):
     try:
         accepted_formats[format](data)
     except KeyError:
-        print('Selected format not supported')
+        print('Not supported format')
