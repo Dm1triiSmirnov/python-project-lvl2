@@ -1,7 +1,8 @@
 import json
 import yaml
+
 from gendiff.parse_data import parse_data
-from formatters.formatter import formatter
+from .formatters.formatter import formatter
 
 
 def get_data(file):

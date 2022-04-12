@@ -29,8 +29,8 @@ def convert_to_stylish(data):
             result.append(adjust_format(TAB, symbols_dict[REMOVED], key, make_str(name)))
 
         elif status == CHANGED:
-            result.append(adjust_format(TAB, symbols_dict[REMOVED], key, make_str(status.get('old_status'))))
-            result.append(adjust_format(TAB, symbols_dict[ADDED], key, make_str(status.get('new_status'))))
+            result.append(adjust_format(TAB, symbols_dict[REMOVED], key, make_str(name.get('old_status'))))
+            result.append(adjust_format(TAB, symbols_dict[ADDED], key, make_str(name.get('new_status'))))
 
         else:
             result.append(adjust_format(TAB, symbols_dict[UNCHANGED], key, convert_to_stylish(children)))
@@ -51,7 +51,7 @@ def make_str(element):
         result = ['{']
         for key, value in element.items():
             result.append(f'{TAB}{key}: {make_str(value)}')
-        result.append['}']
+        result.append('}')
         result = '\n'.join(result)
         return result
     else:

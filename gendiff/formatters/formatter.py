@@ -1,6 +1,6 @@
-from stylish import convert_to_stylish
+from .stylish import convert_to_stylish
 from .json import convert_to_json
-from plain import convert_to_plain
+from .plain import convert_to_plain
 
 
 accepted_formats = {
@@ -9,7 +9,8 @@ accepted_formats = {
     'plain': convert_to_plain
 }
 
-def formatter(data, format):
+
+def formatter(data, format='stylish'):
     try:
         accepted_formats[format](data)
     except KeyError:
