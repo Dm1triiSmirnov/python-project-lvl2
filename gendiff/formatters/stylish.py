@@ -21,20 +21,20 @@ def convert_to_stylish(data, depth=0):
         children = value.get('children')
         indent = TAB * (depth - 1)
         if status == UNCHANGED:
-            result.append(adjust_format(indent, symbols_dict[UNCHANGED], key, make_str(name, depth + 1)))
+            result.append(adjust_format(indent, symbols_dict[UNCHANGED], key, make_str(name, depth + 1)))  # noqa E501
 
         elif status == ADDED:
-            result.append(adjust_format(indent, symbols_dict[ADDED], key, make_str(name, depth + 1)))
+            result.append(adjust_format(indent, symbols_dict[ADDED], key, make_str(name, depth + 1)))  # noqa E501
 
         elif status == REMOVED:
-            result.append(adjust_format(indent, symbols_dict[REMOVED], key, make_str(name, depth + 1)))
+            result.append(adjust_format(indent, symbols_dict[REMOVED], key, make_str(name, depth + 1)))  # noqa E501
 
         elif status == CHANGED:
-            result.append(adjust_format(indent, symbols_dict[REMOVED], key, make_str(name.get('old_status'), depth + 1)))
-            result.append(adjust_format(indent, symbols_dict[ADDED], key, make_str(name.get('new_status'), depth + 1)))
+            result.append(adjust_format(indent, symbols_dict[REMOVED], key, make_str(name.get('old_status'), depth + 1)))  # noqa E501
+            result.append(adjust_format(indent, symbols_dict[ADDED], key, make_str(name.get('new_status'), depth + 1)))  # noqa E501
 
         else:
-            result.append(adjust_format(indent, symbols_dict[UNCHANGED], key, convert_to_stylish(children, depth)))
+            result.append(adjust_format(indent, symbols_dict[UNCHANGED], key, convert_to_stylish(children, depth)))  # noqa E501
     result.append(indent + '}')
     result = '\n'.join(result)
     return result
