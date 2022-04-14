@@ -16,10 +16,11 @@ def convert_to_stylish(data, depth=0):
     result = ['{']
     depth += 1
     for key, val in data.items():
+        indent = TAB * (depth - 1)
         status = val.get('status')
         value = val.get('value')
         children = val.get('children')
-        indent = TAB * (depth - 1)
+
         if status == UNCHANGED:
             result.append(adjust(indent, symbols_dict[UNCHANGED], key, make_str(value, depth + 1)))  # noqa E501
 
