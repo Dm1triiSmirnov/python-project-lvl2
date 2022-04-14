@@ -15,32 +15,32 @@ symbols_dict = {
 def convert_to_stylish(data, depth=0):
     result = ['{']
     depth += 1
-    for key, value in data.items():
-        status = value.get('status')
-        name = value.get('value')
-        children = value.get('children')
+    for key, val in data.items():
+        status = val.get('status')
+        value = val.get('value')
+        children = val.get('children')
         indent = TAB * (depth - 1)
         if status == UNCHANGED:
-            result.append(adjust_format(indent, symbols_dict[UNCHANGED], key, make_str(name, depth + 1)))  # noqa E501
+            result.append(adjust(indent, symbols_dict[UNCHANGED], key, make_str(value, depth + 1)))  # noqa E501
 
         elif status == ADDED:
-            result.append(adjust_format(indent, symbols_dict[ADDED], key, make_str(name, depth + 1)))  # noqa E501
+            result.append(adjust(indent, symbols_dict[ADDED], key, make_str(value, depth + 1)))  # noqa E501
 
         elif status == REMOVED:
-            result.append(adjust_format(indent, symbols_dict[REMOVED], key, make_str(name, depth + 1)))  # noqa E501
+            result.append(adjust(indent, symbols_dict[REMOVED], key, make_str(value, depth + 1)))  # noqa E501
 
         elif status == CHANGED:
-            result.append(adjust_format(indent, symbols_dict[REMOVED], key, make_str(name.get('old_status'), depth + 1)))  # noqa E501
-            result.append(adjust_format(indent, symbols_dict[ADDED], key, make_str(name.get('new_status'), depth + 1)))  # noqa E501
+            result.append(adjust(indent, symbols_dict[REMOVED], key, make_str(value.get('old_status'), depth + 1)))  # noqa E501
+            result.append(adjust(indent, symbols_dict[ADDED], key, make_str(value.get('new_status'), depth + 1)))  # noqa E501
 
         else:
-            result.append(adjust_format(indent, symbols_dict[UNCHANGED], key, convert_to_stylish(children, depth)))  # noqa E501
+            result.append(adjust(indent, symbols_dict[UNCHANGED], key, convert_to_stylish(children, depth)))  # noqa E501
     result.append(indent + '}')
     result = '\n'.join(result)
     return result
 
 
-def adjust_format(indent, symbol, key, value):
+def adjust(indent, symbol, key, value):
     return f'{indent}{symbol}{key}: {value}'
 
 
