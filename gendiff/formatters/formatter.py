@@ -10,5 +10,5 @@ accepted_formats = {
 }
 
 
-def formatter(data, format):
-    return accepted_formats[format](data)
+def formatter(data, format_name):
+    return accepted_formats[format_name](data)
