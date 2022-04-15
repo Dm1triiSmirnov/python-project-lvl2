@@ -21,14 +21,8 @@ def convert_to_stylish(data, depth=0):
         value = val.get('value')
         children = val.get('children')
 
-        if status == UNCHANGED:
-            result.append(adjust(indent, symbols_dict[UNCHANGED], key, make_str(value, depth + 1)))  # noqa E501
-
-        elif status == ADDED:
-            result.append(adjust(indent, symbols_dict[ADDED], key, make_str(value, depth + 1)))  # noqa E501
-
-        elif status == REMOVED:
-            result.append(adjust(indent, symbols_dict[REMOVED], key, make_str(value, depth + 1)))  # noqa E501
+        if status == UNCHANGED or status == ADDED or status == REMOVED:
+            result.append(adjust(indent, symbols_dict[status], key, make_str(value, depth + 1)))  # noqa E501
 
         elif status == CHANGED:
             result.append(adjust(indent, symbols_dict[REMOVED], key, make_str(value.get('old_status'), depth + 1)))  # noqa E501
