@@ -11,7 +11,9 @@ accepted_formats = {
 
 
 def formatter(data, format='stylish'):
-    try:
-        return accepted_formats[format](data)
-    except KeyError:
-        print('Not supported format')
+    # try:
+
+    return accepted_formats[format](data)
+
+    # except KeyError:
+    #     print('Not supported format')

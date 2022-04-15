@@ -1,53 +1,55 @@
 import json
 
-from gendiff.parse_data import UNCHANGED, CHANGED, ADDED, REMOVED, NESTED
+from gendiff.parse_data import CHANGED, ADDED, REMOVED, NESTED
 
 
 TEMPLATES = {
-    ADDED: 'Property \'{name}\' was added with value: {value}',
-    REMOVED: 'Property \'{name}\' was removed',
-    CHANGED: 'Property \'{name}\' was updated. From {old} to {new}'
+    ADDED: 'Property \'{0}\' was added with value: {1}',
+    REMOVED: 'Property \'{0}\' was removed',
+    CHANGED: 'Property \'{0}\' was updated. From {1} to {2}'
 }
 
-def convert_to_plain(data, name=[]):
+
+def convert_to_plain(data, name=''):
     result = []
 
     for key, val in data.items():
         status = val.get('status')
         value = val.get('value')
         children = val.get('children')
-        name.append('.' + key)
+        path = f'{name}.{key}'.lstrip('.')
 
         if status == ADDED:
             if isinstance(value, dict):
                 value = '[complex value]'
-            result.append(TEMPLATES[ADDED].format(''.join(name), value))
+            else:
+                value = make_str(value)
+            result.append(TEMPLATES[ADDED].format(path, value))
 
         elif status == REMOVED:
-            result.append(TEMPLATES[REMOVED].format(''.join(name)))
+            result.append(TEMPLATES[REMOVED].format(path))
 
         elif status == CHANGED:
-            if isinstance(value.get('old_value'), dict):
+            if isinstance(value.get('old_status'), dict):
                 old = '[complex value]'
-                new = value.get('new_value')
-            if isinstance(value.get('new_value'), dict):
-                old = value.get('old_value')
+                new = make_str(value.get('new_status'))
+            elif isinstance(value.get('new_status'), dict):
+                old = make_str(value.get('old_status'))
                 new = '[complex value]'
             else:
-                pass
-            result.append(TEMPLATES[CHANGED].format(''.join(name), old, new))
+                old = make_str(value.get('old_status'))
+                new = make_str(value.get('new_status'))
+            result.append(TEMPLATES[CHANGED].format(path, old, new))
 
         elif status == NESTED:
             if isinstance(children, dict):
-                result.append(convert_to_plain(children, name))
+                result.append(convert_to_plain(children, path))
 
     return '\n'.join(result)
 
 
-# def make_str(element):
-#     if isinstance(element, str):
-#         return element
-#     else:
-#         return json.dumps(element)
-
-
+def make_str(element):
+    if isinstance(element, str):
+        return f'\'{element}\''
+    else:
+        return json.dumps(element)

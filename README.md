@@ -17,4 +17,8 @@
 
 <li>Compare nested JSON & YAML files (Stylish)</li>
 <a href="https://asciinema.org/a/RpRXwb4sf2EFYKiwu0SeSz660" target="_blank"><img src="https://asciinema.org/a/RpRXwb4sf2EFYKiwu0SeSz660.svg" /></a>
+
+<li>Compare nested JSON & YAML files (Plain)</li>
+<a href="https://asciinema.org/a/UKmAX37sZOvJPLH86IkE9TocE" target="_blank"><img src="https://asciinema.org/a/UKmAX37sZOvJPLH86IkE9TocE.svg" /></a>
+
 </ol>
