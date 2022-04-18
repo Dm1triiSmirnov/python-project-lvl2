@@ -41,5 +41,5 @@ def read_result_file(file_name):
 ])
 
 
-def test_gendiff(file_1, file_2, expected_result, formatter):
+def test_generate_diff(file_1, file_2, expected_result, formatter):
     assert generate_diff(file_1, file_2, formatter) == expected_result
