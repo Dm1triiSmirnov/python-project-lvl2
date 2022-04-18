@@ -25,7 +25,7 @@ def read_file(file_name):
 
 
 def read_result_file(file_name):
-    file = os.path.join(os.path.dirname(__file__), 'test_results', file_name)
+    file = os.path.join(os.path.dirname(__file__), 'fixtures/test_results', file_name)
     with open(file) as result:
         return ''.join(result.readlines())
 
