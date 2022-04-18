@@ -14,10 +14,10 @@ def convert_to_plain(data, name=''):
     result = []
 
     for key, val in data.items():
+        path = f'{name}.{key}'.lstrip('.')
         status = val.get('status')
         value = val.get('value')
         children = val.get('children')
-        path = f'{name}.{key}'.lstrip('.')
 
         if status == ADDED:
             if isinstance(value, dict):

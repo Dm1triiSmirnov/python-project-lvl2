@@ -8,12 +8,12 @@ from .formatters.formatter import formatter
 def get_data(file):
     extension = file.split('.')[-1]
     if extension == 'json':
-        data = json.load(open(file))
-        return data
+        with open(file) as json_file:
+            data = json.load(json_file)
     elif extension == 'yml' or extension == 'yaml':
         with open(file) as yml_file:
             data = yaml.safe_load(yml_file)
-            return data
+    return data
 
 
 def generate_diff(file1, file2, format='stylish'):
