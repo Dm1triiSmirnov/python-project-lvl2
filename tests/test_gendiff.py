@@ -1,7 +1,7 @@
 import os
 import pytest
 
-from gendiff.generate_diff import generate_diff
+from gendiff.gen_diff import generate_diff
 
 
 FLAT_JSON_FILE_1 = 'flat_file1.json'

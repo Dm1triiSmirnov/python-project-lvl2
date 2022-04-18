@@ -1,6 +1,6 @@
 import argparse
 
-from gendiff.generate_diff import generate_diff
+from gendiff.gen_diff import generate_diff
 
 
 def args_init():
