@@ -5,11 +5,9 @@ from gendiff.parse_data import UNCHANGED, CHANGED, ADDED, REMOVED
 SPACE = ' '
 TAB = SPACE * 4
 
-symbols_dict = {
-    UNCHANGED: TAB,
-    ADDED: f'{SPACE * 2}+{SPACE}',
-    REMOVED: f'{SPACE * 2}-{SPACE}'
-                }
+symbols_dict = {UNCHANGED: TAB,
+                ADDED: f'{SPACE * 2}+{SPACE}',
+                REMOVED: f'{SPACE * 2}-{SPACE}'}
 
 
 def convert_to_stylish(data, depth=0):
