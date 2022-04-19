@@ -87,4 +87,4 @@ gendiff --format json filepath1.json filepath2.json
 <a href="https://asciinema.org/a/iukBgisAMLzQrGuZBYjGF8X8f" target="_blank"><img src="https://asciinema.org/a/iukBgisAMLzQrGuZBYjGF8X8f.svg" /></a>
 </ol>
 
-Happy Pythoning! snake
+<h4>Happy Pythoning! 🐍</h4>
