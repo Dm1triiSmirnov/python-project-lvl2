@@ -9,7 +9,7 @@ symbols_dict = {
     UNCHANGED: TAB,
     ADDED: f'{SPACE * 2}+{SPACE}',
     REMOVED: f'{SPACE * 2}-{SPACE}'
-    }
+                }
 
 
 def convert_to_stylish(data, depth=0):

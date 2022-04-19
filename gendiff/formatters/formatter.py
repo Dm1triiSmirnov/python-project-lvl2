@@ -7,7 +7,7 @@ accepted_formats = {
     'stylish': convert_to_stylish,
     'json': convert_to_json,
     'plain': convert_to_plain
-    }
+                    }
 
 
 def formatter(data, format_name):

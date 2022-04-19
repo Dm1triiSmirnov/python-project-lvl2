@@ -29,6 +29,7 @@ def read_result_file(file_name):
     with open(file) as result:
         return ''.join(result.readlines())
 
+
 @pytest.mark.parametrize('file_1, file_2, expected_result, formatter', [
     (read_file(FLAT_JSON_FILE_1), read_file(FLAT_JSON_FILE_2), read_result_file(RESULT_FLAT), 'stylish'),
     (read_file(FLAT_YAML_FILE_1), read_file(FLAT_YAML_FILE_2), read_result_file(RESULT_FLAT), 'stylish'),
@@ -39,7 +40,5 @@ def read_result_file(file_name):
     (read_file(NESTED_JSON_FILE_1), read_file(NESTED_JSON_FILE_2), read_result_file(RESULT_JSON), 'json'),
     (read_file(NESTED_YAML_FILE_1), read_file(NESTED_YAML_FILE_2), read_result_file(RESULT_JSON), 'json'),
 ])
-
-
 def test_generate_diff(file_1, file_2, expected_result, formatter):
     assert generate_diff(file_1, file_2, formatter) == expected_result
