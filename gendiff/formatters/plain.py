@@ -1,6 +1,6 @@
 import json
 
-from gendiff.parse_data import CHANGED, ADDED, REMOVED, NESTED
+from gendiff.compare_data import CHANGED, ADDED, REMOVED, NESTED
 
 
 TEMPLATES = {
@@ -15,7 +15,7 @@ def convert_to_plain(data, name=''):
 
     for key, val in data.items():
         path = f'{name}.{key}'.lstrip('.')
-        status = val.get('status')
+        status = val.get('type')
         value = val.get('value')
         children = val.get('children')
 
@@ -30,15 +30,15 @@ def convert_to_plain(data, name=''):
             result.append(TEMPLATES[REMOVED].format(path))
 
         elif status == CHANGED:
-            if isinstance(value.get('old_status'), dict):
+            if isinstance(value.get('old_type'), dict):
                 old = '[complex value]'
-                new = make_str(value.get('new_status'))
-            elif isinstance(value.get('new_status'), dict):
-                old = make_str(value.get('old_status'))
+                new = make_str(value.get('new_type'))
+            elif isinstance(value.get('new_type'), dict):
+                old = make_str(value.get('old_type'))
                 new = '[complex value]'
             else:
-                old = make_str(value.get('old_status'))
-                new = make_str(value.get('new_status'))
+                old = make_str(value.get('old_type'))
+                new = make_str(value.get('new_type'))
             result.append(TEMPLATES[CHANGED].format(path, old, new))
 
         elif status == NESTED:

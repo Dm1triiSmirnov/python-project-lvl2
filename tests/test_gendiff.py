@@ -2,6 +2,7 @@ import os
 import pytest
 
 from gendiff.gen_diff import generate_diff
+from gendiff.formatters.formatter import STYLISH, PLAIN, JSON
 
 
 FLAT_JSON_FILE_1 = 'flat_file1.json'
@@ -31,14 +32,14 @@ def read_result_file(file_name):
 
 
 @pytest.mark.parametrize('file_1, file_2, expected_result, formatter', [
-    (read_file(FLAT_JSON_FILE_1), read_file(FLAT_JSON_FILE_2), read_result_file(RESULT_FLAT), 'stylish'),
-    (read_file(FLAT_YAML_FILE_1), read_file(FLAT_YAML_FILE_2), read_result_file(RESULT_FLAT), 'stylish'),
-    (read_file(NESTED_JSON_FILE_1), read_file(NESTED_JSON_FILE_2), read_result_file(RESULT_STYLISH), 'stylish'),
-    (read_file(NESTED_YAML_FILE_1), read_file(NESTED_YAML_FILE_2), read_result_file(RESULT_STYLISH), 'stylish'),
-    (read_file(NESTED_JSON_FILE_1), read_file(NESTED_JSON_FILE_2), read_result_file(RESULT_PLAIN), 'plain'),
-    (read_file(NESTED_YAML_FILE_1), read_file(NESTED_YAML_FILE_2), read_result_file(RESULT_PLAIN), 'plain'),
-    (read_file(NESTED_JSON_FILE_1), read_file(NESTED_JSON_FILE_2), read_result_file(RESULT_JSON), 'json'),
-    (read_file(NESTED_YAML_FILE_1), read_file(NESTED_YAML_FILE_2), read_result_file(RESULT_JSON), 'json'),
+    (read_file(FLAT_JSON_FILE_1), read_file(FLAT_JSON_FILE_2), read_result_file(RESULT_FLAT), STYLISH),
+    (read_file(FLAT_YAML_FILE_1), read_file(FLAT_YAML_FILE_2), read_result_file(RESULT_FLAT), STYLISH),
+    (read_file(NESTED_JSON_FILE_1), read_file(NESTED_JSON_FILE_2), read_result_file(RESULT_STYLISH), STYLISH),
+    (read_file(NESTED_YAML_FILE_1), read_file(NESTED_YAML_FILE_2), read_result_file(RESULT_STYLISH), STYLISH),
+    (read_file(NESTED_JSON_FILE_1), read_file(NESTED_JSON_FILE_2), read_result_file(RESULT_PLAIN), PLAIN),
+    (read_file(NESTED_YAML_FILE_1), read_file(NESTED_YAML_FILE_2), read_result_file(RESULT_PLAIN), PLAIN),
+    (read_file(NESTED_JSON_FILE_1), read_file(NESTED_JSON_FILE_2), read_result_file(RESULT_JSON), JSON),
+    (read_file(NESTED_YAML_FILE_1), read_file(NESTED_YAML_FILE_2), read_result_file(RESULT_JSON), JSON),
 ])
 def test_generate_diff(file_1, file_2, expected_result, formatter):
     assert generate_diff(file_1, file_2, formatter) == expected_result

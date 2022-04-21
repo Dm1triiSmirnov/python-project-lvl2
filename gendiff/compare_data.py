@@ -5,41 +5,41 @@ REMOVED = 'removed'
 NESTED = 'nested'
 
 
-def parse_data(data1, data2):
+def get_diff(data1, data2):
     result = dict()
     all_keys = sorted(data1.keys() | data2.keys())
 
     for key in all_keys:
         if key not in data2:
             result[key] = {
-                'status': REMOVED,
+                'type': REMOVED,
                 'value': data1[key],
                 'children': None
             }
         elif key not in data1:
             result[key] = {
-                'status': ADDED,
+                'type': ADDED,
                 'value': data2[key],
                 'children': None
             }
         elif data1[key] == data2[key]:
             result[key] = {
-                'status': UNCHANGED,
+                'type': UNCHANGED,
                 'value': data1[key],
                 'children': None
             }
         elif isinstance(data1[key], dict) and isinstance(data2[key], dict):
             result[key] = {
-                'status': NESTED,
+                'type': NESTED,
                 'value': None,
-                'children': parse_data(data1[key], data2[key])
+                'children': get_diff(data1[key], data2[key])
             }
         else:
             result[key] = {
-                'status': CHANGED,
+                'type': CHANGED,
                 'value': {
-                    'old_status': data1[key],
-                    'new_status': data2[key]
+                    'old_type': data1[key],
+                    'new_type': data2[key]
                 },
                 'children': None
             }
