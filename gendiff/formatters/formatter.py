@@ -13,4 +13,11 @@ accepted_formats = {STYLISH: convert_to_stylish,
 
 
 def formatter(data, format_name):
-    return accepted_formats[format_name](data)
+    try:
+        return accepted_formats[format_name](data)
+    except KeyError:
+        print('Wrong format!\n'
+              'The program only supports the following formats:\n'
+              '\t- stylish\n'
+              '\t- json\n'
+              '\t- plain')

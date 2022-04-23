@@ -20,31 +20,31 @@ def convert_to_stylish(data, depth=0):
         children = val.get('children')
 
         if status == UNCHANGED or status == ADDED or status == REMOVED:
-            result.append(adjust(indent, symbols_dict[status], key, make_str(value, depth + 1)))  # noqa E501
+            result.append(string_template(indent, symbols_dict[status], key, convert_to_string(value, depth + 1)))  # noqa E501
 
         elif status == CHANGED:
-            result.append(adjust(indent, symbols_dict[REMOVED], key, make_str(value.get('old_type'), depth + 1)))  # noqa E501
-            result.append(adjust(indent, symbols_dict[ADDED], key, make_str(value.get('new_type'), depth + 1)))  # noqa E501
+            result.append(string_template(indent, symbols_dict[REMOVED], key, convert_to_string(value.get('old_type'), depth + 1)))  # noqa E501
+            result.append(string_template(indent, symbols_dict[ADDED], key, convert_to_string(value.get('new_type'), depth + 1)))  # noqa E501
 
         else:
-            result.append(adjust(indent, symbols_dict[UNCHANGED], key, convert_to_stylish(children, depth)))  # noqa E501
+            result.append(string_template(indent, symbols_dict[UNCHANGED], key, convert_to_stylish(children, depth)))  # noqa E501
     result.append(indent + '}')
     result = '\n'.join(result)
     return result
 
 
-def adjust(indent, symbol, key, value):
+def string_template(indent, symbol, key, value):
     return f'{indent}{symbol}{key}: {value}'
 
 
-def make_str(element, depth):
+def convert_to_string(element, depth):
     if isinstance(element, str):
         return element
     elif isinstance(element, dict):
         result = ['{']
         indent = TAB * depth
         for key, value in element.items():
-            result.append(f'{indent}{key}: {make_str(value, depth + 1)}')
+            result.append(f'{indent}{key}: {convert_to_string(value, depth + 1)}')  # noqa E501
         result.append(TAB * (depth - 1) + '}')
         result = '\n'.join(result)
         return result
