@@ -30,6 +30,7 @@ def read_result_file(file_name):
     with open(file) as result:
         return ''.join(result.readlines())
 
+
 @pytest.mark.parametrize('file_name_1, file_name_2, result_file_name, formatter', [
     (FLAT_JSON_FILE_1, FLAT_JSON_FILE_2, RESULT_FLAT, STYLISH),
     (FLAT_YAML_FILE_1, FLAT_YAML_FILE_2, RESULT_FLAT, STYLISH),
