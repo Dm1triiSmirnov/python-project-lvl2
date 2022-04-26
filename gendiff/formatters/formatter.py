@@ -16,8 +16,8 @@ def formatter(data, format_name):
     try:
         return accepted_formats[format_name](data)
     except KeyError:
-        print('Wrong format!\n'
+        raise ValueError('Incorrect format!\n'
               'The program only supports the following formats:\n'
-              '\t- stylish\n'
-              '\t- json\n'
-              '\t- plain')
+                         '\t- stylish\n'
+                         '\t- json\n'
+                         '\t- plain')
