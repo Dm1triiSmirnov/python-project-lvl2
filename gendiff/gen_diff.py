@@ -1,9 +1,8 @@
 import os
-import json
-import yaml
 
 from gendiff.compare_data import get_diff
 from .formatters.formatter import formatter, STYLISH
+from gendiff.parse import parse
 
 
 def read_file(file_path):
@@ -11,14 +10,6 @@ def read_file(file_path):
     with open(file_path) as file:
         text = file.read()
         return text, format
-
-
-def parse(text, format):
-    if format == 'json':
-        parsed_data = json.loads(text)
-    elif format == 'yml' or format == 'yaml':
-        parsed_data = yaml.safe_load(text)
-    return parsed_data
 
 
 def generate_diff(file_path1, file_path2, format=STYLISH):
